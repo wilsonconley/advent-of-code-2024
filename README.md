@@ -1,4 +1,4 @@
-# advent-of-code-2024
+# advent_of_code_2024
 
 Join my private leaderboard!
 
