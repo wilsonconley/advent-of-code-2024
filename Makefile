@@ -12,3 +12,7 @@ leaderboard:
 	git add README.md
 	git commit -m "(auto) Update leaderboard"
 	git push
+
+.PHONY: day_%
+day_%:
+	cp -r template $@
