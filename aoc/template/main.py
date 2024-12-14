@@ -1,7 +1,7 @@
 import argparse
 import typing as t
 
-from .. import util
+import util
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

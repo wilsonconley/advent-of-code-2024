@@ -15,4 +15,4 @@ leaderboard:
 
 .PHONY: day_%
 day_%:
-	cp -r template $@
+	cp -r aoc/template aoc/$@
