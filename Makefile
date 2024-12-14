@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 .PHONY: check
 check:
-	mypy --strict --pretty --show-error-codes .
+	mypy --strict --pretty --show-error-codes ./aoc/ leaderboard.py
 	black --diff --check .
 	pylint $(shell git ls-files '*.py' | grep -vF "template")
 
