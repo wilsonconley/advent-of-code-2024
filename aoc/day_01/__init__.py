@@ -1,27 +1,18 @@
-import argparse
+__all__ = ["solve"]
+
 import typing as t
+from pathlib import Path
 
 from .. import util
 
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    "input",
-    type=str,
-    nargs="?",
-    default="input",
-    help="Puzzle input to use.",
-)
 
-# ============
-# Main
-# ============
+def solve(input_type: t.Literal["sample", "input"] = "input") -> None:
+    input_path = util.input_path(Path(__file__).parent.name, input_type)
 
-
-def main(name: t.Literal["sample", "input"] = "input") -> None:
     # Part 1
     group_one = []
     group_two = []
-    for line in util.yield_input_lines(name):
+    for line in util.yield_input_lines(input_path):
         a, b = line.split()
         group_one.append(a)
         group_two.append(b)
@@ -31,7 +22,7 @@ def main(name: t.Literal["sample", "input"] = "input") -> None:
     for a, b in zip(group_one, group_two):
         distance = abs(int(a) - int(b))
         total += distance
-    print(f"Part 1 ({name}): ")
+    print(f"Part 1 ({input_type}): ")
     print(total)
 
     # Part 2
@@ -40,10 +31,5 @@ def main(name: t.Literal["sample", "input"] = "input") -> None:
         count = group_two.count(value)
         score = int(value) * count
         total += score
-    print(f"Part 2 ({name}): ")
+    print(f"Part 2 ({input_type}): ")
     print(total)
-
-
-if __name__ == "__main__":
-    args = parser.parse_args()
-    main(args.input)
