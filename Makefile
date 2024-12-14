@@ -16,3 +16,13 @@ leaderboard:
 .PHONY: day_%
 day_%:
 	cp -r aoc/template aoc/$@
+
+.PHONY: env
+env: .python-version
+	pip install -e .
+	pyenv rehash
+
+.python-version:
+	pyenv install --skip-existing 3.10
+	pyenv virtualenv --force 3.10 aoc_2024
+	pyenv local aoc_2024
