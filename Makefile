@@ -4,7 +4,7 @@ SHELL := /bin/bash
 check:
 	mypy --strict --pretty --show-error-codes .
 	black --diff --check .
-	pylint $(shell git ls-files | grep "\.py$$")
+	pylint $(shell git ls-files | grep "\.py$$" | grep -vF "template")
 
 .PHONY: leaderboard
 leaderboard:

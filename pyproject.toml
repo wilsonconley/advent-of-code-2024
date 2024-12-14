@@ -22,4 +22,4 @@ dependencies = [
 "Homepage" = "https://github.com/wilsonconley/advent_of_code_2024/"
 
 [project.scripts]
-aoc = "aoc.__main__:app"
+aoc = "aoc.__main__:APP"

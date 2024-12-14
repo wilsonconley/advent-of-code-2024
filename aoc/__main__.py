@@ -1,9 +1,10 @@
 import importlib
 import re
-import typer
 from enum import Enum
 
-app = typer.Typer()
+import typer
+
+APP = typer.Typer()
 
 
 class InputType(Enum):
@@ -11,7 +12,7 @@ class InputType(Enum):
     INPUT = "input"
 
 
-@app.command()
+@APP.command()
 def solve(
     day: str = typer.Argument(help="The day to solve. e.g., 'day_01'"),
     input_type: InputType = typer.Option(
@@ -21,13 +22,13 @@ def solve(
             "or 'input' for the actual puzzle input."
         ),
     ),
-):
+) -> None:
     """Solve the day's puzzle."""
-    if not re.match("day_\d\d", day):
-        raise ValueError("`day` argument must be in format `day_\d\d`!")
+    if not re.match("day_\\d\\d", day):
+        raise ValueError("`day` argument must be in format `day_\\d\\d`!")
     module = importlib.import_module(f".{day}", __package__)
     module.solve(input_type.value)
 
 
 if __name__ == "__main__":
-    app()
+    APP()
