@@ -1,10 +1,19 @@
 SHELL := /bin/bash
 
 .PHONY: check
-check:
-	mypy --strict --pretty --show-error-codes ./aoc/ leaderboard.py
-	black --diff --check .
+check: lint typecheck format
+
+.PHONY: lint
+lint:
 	pylint $(shell git ls-files '*.py' | grep -vF "template")
+
+.PHONY: typecheck
+typecheck:
+	mypy --strict --pretty --show-error-codes ./aoc/ leaderboard.py
+
+.PHONY: format
+format:
+	black --diff --check .
 
 .PHONY: leaderboard
 leaderboard:
