@@ -28,6 +28,7 @@ def get_leaderboard() -> pd.DataFrame:
         table_dict["stars"].append(user["stars"])
 
     df = pd.DataFrame(table_dict)
+    df = df.sort_values("stars", axis=0, ascending=False)
     df.index += 1
 
     return df
